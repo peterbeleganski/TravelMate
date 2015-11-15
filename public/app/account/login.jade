@@ -1,0 +1,21 @@
+.container(ng-hide="identity.isAuthenticated()")
+   h3 Login page
+   hr
+   form(name="login" novalidate)
+      .row
+         .col-lg-12
+            .form-group
+               label Email
+               .input-group
+                  span.input-group-addon
+                     span.glyphicon.glyphicon-user
+                  input#Email.form-control(type='text', name='username', ng-model="username"  placeholder='Username', required )
+            .form-group
+               label Password
+               .input-group
+                  span.input-group-addon
+                     span.glyphicon.glyphicon-lock
+                  input#password.form-control(type='password', name='password', placeholder='Password',  ng-model="password"  required data-toggle='popover', title='Password Strength', data-content='Enter Password...')
+            button#submit.btn.btn-sm.btn-primary.pull-right(ng-click="signin()") Login
+
+

@@ -1,0 +1,12 @@
+.navbar-right(ng-controller="LoginCtrl")
+   ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
+      li.dropdown
+         a.dropdown-toggle(href="", data-toggle="dropdown") {{ identity.currUser.email}}
+            span.caret
+         ul.dropdown-menu
+            li(ng-show="identity.currUser.isAdmin()")
+               a(href="#/admin/users") Users
+            li(ng-show="identity.isAuthenticated()")
+               a(href="/profile") Profile
+            li
+               a(href="" ng-click="logout()") Sign out

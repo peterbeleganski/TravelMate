@@ -1,0 +1,28 @@
+.container
+   .row
+      .col-md-6
+         img(src="https://www.plexusmd.com/PlexusMDAPI//Images/ProfilePicture/default_profile.jpg" width="300px")
+      .col-md-6
+         h2 My profile
+         form.form-horizontal
+            .form-group
+               label(for="username") Username
+               input.form-control(type="text" name="username" disabled=true id="username" ng-model="user.username")
+            .form-group
+               label(for="first_name") First Name
+               input.form-control(type="text" name="first_name" disabled=true id="first_name" ng-model="user.firstName")
+            .form-group
+               label(for="first_name") Last Name
+               input.form-control(type="text" name="last_name" disabled=true id="last_name" ng-model="user.lastName")
+            .form-group
+               label(for="current_place") Current Place
+               input.form-control(type="text" name="current_place" disabled=true id="current_place" ng-model="user.currentPlace")
+            .form-group
+               label(for="email") Email
+               input.form-control(type="email" name="email" disabled=true id="email" ng-model="user.email")
+            .form-group
+               label(for="phone") Phone
+               input.form-control(type="text" name="phone" disabled=true id="phone" ng-model="user.phone")
+
+   .row
+      p {{user | json}}

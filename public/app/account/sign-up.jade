@@ -1,0 +1,38 @@
+.container
+   h3 Registration
+   hr
+   form(ng-submit="registerAccount()" name="register" novalidate)
+      .row
+         .col-lg-12
+            .form-group
+               label Username
+               .input-group
+                  span.input-group-addon
+                     span.glyphicon.glyphicon-user
+                  input#Username.form-control(type='text', name='username', ng-model="username" ng-pattern="/^[A-Za-z0-9_]{3,15}$/" placeholder='Requested Username')
+               p.help-block(ng-show="register.username.$dirty && register.username.$invalid")
+                span.text-danger Username incorrect!
+            .form-group
+               label Email
+               .input-group
+                  span.input-group-addon
+                     span.glyphicon.glyphicon-envelope
+                  input#Email.form-control(type='email', name='email', ng-model="email"  placeholder='Requested Email', required )
+               p.help-block(ng-show="register.email.$dirty && register.email.$invalid")
+                span.text-danger Please enter a valid email!
+            .form-group
+               label Password
+               .input-group
+                  span.input-group-addon
+                     span.glyphicon.glyphicon-lock
+                  input#password.form-control(type='password', name='password', placeholder='Password',  ng-model="password"  required data-toggle='popover', title='Password Strength', data-content='Enter Password...')
+            .form-group
+               label Confirm Password
+               .input-group
+                  span.input-group-addon
+                     span.glyphicon.glyphicon-lock
+                  input#confirm.form-control(type='password', name='password_confirm',ng-model="password_confirm" validate-equals="password" placeholder='Confirm Password', required)
+               p.help-block(ng-show="register.password_confirm.$dirty && register.password_confirm.$invalid")
+                span.text-danger Please match the passwords!
+            input#submit.btn.btn-sm.btn-primary.pull-right(type='submit',ng-disabled="register.$invalid"  name='submit', value='Register')
+            a.text-success(href="/login") Already have account ?

@@ -1,0 +1,38 @@
+.container
+   .well-sm
+      div.row
+         .col-md-4(ng-repeat="ad in ads")
+            .panel.panel-success
+               .panel-heading.text-center
+                  h5 {{ad.user}}
+               .panel-body
+                  .row
+                     .col-md-5
+                        img.panel-pic(src="{{ad.img}}")
+                        a(href="#/") View User
+                     .col-md-7.text-info
+                        span.text-warning {{ad.travelFrom}} &nbsp;
+                        span.glyphicon.glyphicon-arrow-right &nbsp;
+                        span.text-success {{ad.travelTo}}
+                        br
+                        span.glyphicon.glyphicon-calendar.text-danger {{ad.date | date}}
+                        br
+                        span.glyphicon.glyphicon-phone  {{ad.phone}}
+                        br
+                        span.glyphicon.glyphicon-envelope  {{ad.email}}
+                        br
+                        span.glyphicon.glyphicon-list-alt &nbsp;
+                           a(href="/#") Details
+                  .row
+                     br
+                     .col-md-5.text-center
+                        button.btn.btn-primary(ng-click="buyLaptop(ad)")
+                           span Request &nbsp;
+                           span.glyphicon.glyphicon-plus
+
+                     .col-md-5.text-center
+                        button.btn.btn-primary(ng-click="buyLaptop(ad)")
+                           span Send Message &nbsp;
+                           span.glyphicon.glyphicon-comment
+
+
