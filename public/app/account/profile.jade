@@ -1,9 +1,12 @@
 .container
    .row
-      .col-md-6
+      .col-md-4
          img(src="https://www.plexusmd.com/PlexusMDAPI//Images/ProfilePicture/default_profile.jpg" width="300px")
-      .col-md-6
-         h2 My profile
+         div
+            br
+            br
+            input.btn.btn-success(type="file" ng-model="user.image" id="image" name="image")
+      .col-md-4
          form.form-horizontal
             .form-group
                label(for="username") Username
@@ -17,12 +20,45 @@
             .form-group
                label(for="current_place") Current Place
                input.form-control(type="text" name="current_place" disabled=true id="current_place" ng-model="user.currentPlace")
-            .form-group
-               label(for="email") Email
-               input.form-control(type="email" name="email" disabled=true id="email" ng-model="user.email")
-            .form-group
-               label(for="phone") Phone
-               input.form-control(type="text" name="phone" disabled=true id="phone" ng-model="user.phone")
+      .col-md-4
+         .form-group
+            label(for="email") Email
+            input.form-control(type="email" name="email" disabled=true id="email" ng-model="user.email")
+         .form-group
+            label(for="phone") Phone
+            input.form-control(type="text" name="phone" disabled=true id="phone" ng-model="user.phone")
+         .form-group
+            label(for="password") New Password
+            input.form-control(type="password" name="password" disabled=true id="password" ng-model="user.password")
+         .form-group
+            br
+            .row
+               .col-md-4
+                  button.btn.btn-primary.buttonUpdate EDIT
+               .col-md-4
+                  button.btn.btn-success#btnSave SAVE
+               .col-md-4
+                  button.btn.btn-danger(id="cancelBTN" ng-click="GoToAds()") CANCEL
 
    .row
       p {{user | json}}
+
+script.
+   $(document).ready(function () {
+
+      $(".buttonUpdate").click(function(){
+         var password = $("#password");
+         password.attr("disabled",false);
+         $("#phone").attr("disabled",false);
+         $("#email").attr("disabled",false);
+         $("#current_place").attr("disabled",false);
+         $("#last_name").attr("disabled",false);
+         $("#first_name").attr("disabled",false);
+         $("#username").attr("disabled",false);
+      });
+
+      $("#btnSave").click(function(){
+         $(".form-group").addClass("has-success");
+      });
+
+   });

@@ -1,4 +1,7 @@
-app.controller('ProfileCtrl', function($scope, identity){
+app.controller('ProfileCtrl', function($scope, identity, $location){
     $scope.user = identity.currUser;
-    $scope.name = "pesho";
+
+    $scope.GoToAds = function(){
+        $location.path('/ads');
+    }
 });
