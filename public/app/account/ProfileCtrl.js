@@ -2,7 +2,7 @@ app.controller('ProfileCtrl', function($scope, identity, $location, notifier, au
     $scope.user = identity.currUser;
 
     $scope.GoToAds = function(){
-        $location.path('/ads');
+        $location.path('/main');
     };
 
 

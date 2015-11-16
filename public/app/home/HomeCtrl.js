@@ -1,8 +1,9 @@
-app.controller('HomeCtrl', function($scope, notifier, $location, shared) {
+app.controller('HomeCtrl', function($scope, notifier, $location, shared, MainResource) {
     $scope.name = "pesho";
 
+    $scope.ads = MainResource.query();
 
-    $scope.ads = [
+    /*$scope.ads = [
         {
             user:"Unknown user",
             travelTo:"Sofia",
@@ -13,18 +14,18 @@ app.controller('HomeCtrl', function($scope, notifier, $location, shared) {
             phone:"03912321323",
             email:"user@eemail.com"
         }
-    ];
+    ]; */
 
     $scope.buyLaptop = function(laptop){
         console.log(laptop);
         shared.setProperty(laptop);
         $location.path('/view')
-    }
+    };
 
     $scope.laptopDetails = shared.getProperty();
 
     $scope.backToGallery = function(){
-       $location.path('/ads');
+       $location.path('/main');
     }
 
 });

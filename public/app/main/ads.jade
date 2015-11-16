@@ -8,7 +8,7 @@
                .panel-body
                   .row
                      .col-md-5
-                        img.panel-pic(src="{{ad.img}}")
+                        img.panel-pic(src="{{img}}")
                         a(href="#/") View User
                      .col-md-7.text-info
                         span.text-warning {{ad.travelFrom}} &nbsp;
@@ -17,9 +17,7 @@
                         br
                         span.glyphicon.glyphicon-calendar.text-danger {{ad.date | date}}
                         br
-                        span.glyphicon.glyphicon-phone  {{ad.phone}}
-                        br
-                        span.glyphicon.glyphicon-envelope  {{ad.email}}
+                        span.glyphicon.glyphicon-user  {{ad.user}}
                         br
                         span.glyphicon.glyphicon-list-alt &nbsp;
                            a(href="/#") Details
@@ -34,5 +32,7 @@
                         button.btn.btn-primary(ng-click="buyLaptop(ad)")
                            span Send Message &nbsp;
                            span.glyphicon.glyphicon-comment
+
+   div {{ads | json}}
 
 

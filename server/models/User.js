@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var encryption = require('../utilities/encrypt');
+var Schema = mongoose.Schema;
 
 var userSchema =  mongoose.Schema({
     username: {type:String, required:true, unique:true},
@@ -11,7 +12,8 @@ var userSchema =  mongoose.Schema({
     roles:[String],
     phone:{type:String, default:"089832151"},
     registeredDate:{type:Date, default:Date.now()},
-    currentPlace:{type:String, default:"Bulgaria"}
+    currentPlace:{type:String, default:"Bulgaria"},
+    ads: [{ ad_id:String,ad_title:String}]
 });
 
 
@@ -49,4 +51,4 @@ module.exports.seedInitialUsers = function(){
        };
 
     });
-}
+};

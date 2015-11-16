@@ -21,11 +21,15 @@ app.config(function($routeProvider, $locationProvider){
     $routeProvider
         .when('/',{
             templateUrl: '/partials/home/home',
-            controller : 'HomeCtrl'
+            controller : 'MainCtrl'
         })
         .when('/ads',{
-            templateUrl:'/partials/home/ads',
-            controller:'HomeCtrl'
+            templateUrl:'/partials/main/ads',
+            controller:'MainCtrl'
+        })
+        .when('/create-ad',{
+            templateUrl: '/partials/main/create-ad',
+            controller : 'CreateAdCtrl'
         })
         .when('/sign-up',{
             templateUrl: '/partials/account/sign-up',

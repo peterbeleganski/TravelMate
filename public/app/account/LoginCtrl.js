@@ -9,7 +9,7 @@ app.controller('LoginCtrl',function($scope, $location, notifier, identity, auth)
         auth.login(user).then(function(success){
             if(success){
                 notifier.success("Successful login");
-                $location.path('/ads')
+                $location.path('/main')
             }else{
                 notifier.err("Username or Password not valid");
             }

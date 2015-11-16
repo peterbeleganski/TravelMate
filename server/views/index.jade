@@ -22,6 +22,8 @@ block main-content
                             a(href='/') Home
                         li
                             a(href='/ads') Ads
+                        li(ng-show="identity.isAuthenticated()")
+                            a(href='/create-ad') Create Ad
                         li(ng-show="!identity.isAuthenticated()")
                             a(href='/sign-up') Register
                         li(ng-hide="identity.isAuthenticated()")
