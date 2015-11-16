@@ -1,3 +1,3 @@
 app.controller('CreateAdCtrl', function($scope){
-   $scope.test = "pesho";
+   $scope.test = "Create ad view!";
 });

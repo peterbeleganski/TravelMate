@@ -2,7 +2,7 @@ app.controller('ProfileCtrl', function($scope, identity, $location, notifier, au
     $scope.user = identity.currUser;
 
     $scope.GoToAds = function(){
-        $location.path('/main');
+        $location.path('/ads');
     };
 
 
@@ -14,7 +14,6 @@ app.controller('ProfileCtrl', function($scope, identity, $location, notifier, au
         auth.update(user).then(function(){
             $scope.user = user;
             notifier.success("Profile updated!");
-            $location.path('/');
         });
     }
 });

@@ -1,0 +1,28 @@
+#frame
+   div.note.sticky0(ng-repeat="ad in ads")
+      .pin
+      | &#x9;&#x9;&#x9;&#x9;
+      .text
+         p.text-warning.text-center {{ad.user}}
+         span  Travel from {{ad.travelFrom}} to {{ad.travelTo}}
+         p.text.text-muted {{ad.seats}} seats available
+         span
+            button.btn.btn-sm.btn-info Check details
+   div.note.sticky3(ng-repeat="ad in ads")
+      .pin
+      | &#x9;&#x9;&#x9;&#x9;
+      .text
+         p.text-warning.text-center {{ad.user}}
+         span Travel from {{ad.travelFrom}} to {{ad.travelTo}}
+         p.text.text-muted {{ad.seats}} seats available
+         span
+            button.btn.btn-sm.btn-info Check details
+   div.note.sticky1(ng-repeat="ad in ads")
+      .pin
+      | &#x9;&#x9;&#x9;&#x9;
+      .text
+         p.text-warning.text-center {{ad.user}}
+         span Travel from {{ad.travelFrom}} to {{ad.travelTo}}
+         p.text.text-muted {{ad.seats}} seats available
+         span
+            button.btn.btn-sm.btn-info Check details

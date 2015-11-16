@@ -24,7 +24,7 @@ app.config(function($routeProvider, $locationProvider){
             controller : 'MainCtrl'
         })
         .when('/ads',{
-            templateUrl:'/partials/main/ads',
+            templateUrl:'/partials/main/ads-board',
             controller:'MainCtrl'
         })
         .when('/create-ad',{
