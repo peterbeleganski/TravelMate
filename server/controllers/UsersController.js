@@ -38,7 +38,7 @@ module.exports = {
             }
             User.update({_id:req.body._id},updatedUserData,function(){
                 res.end();
-            })
+            });
         }else{
             res.send({reason:'Because!'});
         }

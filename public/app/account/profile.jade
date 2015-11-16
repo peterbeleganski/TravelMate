@@ -34,31 +34,13 @@
             br
             .row
                .col-md-4
-                  button.btn.btn-primary.buttonUpdate EDIT
+                  button.btn.btn-primary.buttonUpdate(ng-click="logUsers()") EDIT
                .col-md-4
-                  button.btn.btn-success#btnSave SAVE
+                  button.btn.btn-success#btnSave(ng-click="update(user)") SAVE
                .col-md-4
                   button.btn.btn-danger(id="cancelBTN" ng-click="GoToAds()") CANCEL
 
    .row
       p {{user | json}}
 
-script.
-   $(document).ready(function () {
-
-      $(".buttonUpdate").click(function(){
-         var password = $("#password");
-         password.attr("disabled",false);
-         $("#phone").attr("disabled",false);
-         $("#email").attr("disabled",false);
-         $("#current_place").attr("disabled",false);
-         $("#last_name").attr("disabled",false);
-         $("#first_name").attr("disabled",false);
-         $("#username").attr("disabled",false);
-      });
-
-      $("#btnSave").click(function(){
-         $(".form-group").addClass("has-success");
-      });
-
-   });
+script(src="/app/account/edit-profile-client-script.js" type="text/javascript")

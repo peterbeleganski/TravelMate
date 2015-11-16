@@ -1,6 +1,5 @@
 'use strict';
 
-
 app
     .directive('validateEquals', function () {
         return {
