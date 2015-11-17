@@ -11,6 +11,15 @@ module.exports = {
             res.send(collection);
         });
     },
+    getUserById : function (req,res,next) {
+        User.findOne({_id: req.params.id}).exec(function(err, user){
+            if(err){
+                console.log(err);
+                return;
+            }
+            res.send(user);
+        });
+    },
     createUser: function(req,res,next){
         var userData = req.body;
         userData.salt = encrypt.generateSalt();

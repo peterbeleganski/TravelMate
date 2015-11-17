@@ -1,4 +1,4 @@
-app.controller('ProfileCtrl', function($scope, identity, $location, notifier, auth){
+app.controller('ProfileCtrl', function($scope, identity, $location, notifier, auth, UsersResource){
     $scope.user = identity.currUser;
 
     $scope.GoToAds = function(){
@@ -15,5 +15,8 @@ app.controller('ProfileCtrl', function($scope, identity, $location, notifier, au
             $scope.user = user;
             notifier.success("Profile updated!");
         });
-    }
+    };
+
+    $scope.users = UsersResource.query();
+    console.log($scope.users);
 });

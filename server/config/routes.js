@@ -7,6 +7,8 @@ var User = mongoose.model('User');
 module.exports = function(app){
 
     app.get('/api/users', controllers.users.getAllUsers);
+    app.get('/api/users/:id', controllers.users.getUserById);
+
 
     app.post('/api/users',controllers.users.createUser);
     app.put('/api/users',auth.authenticate, controllers.users.updateUser);

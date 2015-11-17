@@ -1,0 +1,15 @@
+.container
+   h2.text-center {{user.username}} 's Profile
+   .row
+      .col-md-6.text-center
+         img(src="{{img}}" width="350px")
+      .col-md-6
+         .panel.panel-primary
+            .panel-heading Email
+            .panel-body {{user.email}}
+         .panel.panel-primary
+            .panel-heading Full Name
+            .panel-body {{user.firstName}} {{user.lastName}}
+         .panel.panel-primary
+            .panel-heading Other information
+            .panel-body Tel. phone:{{user.phone}} ; Current Place:{{user.currentPlace}} ; Registered on:{{user.registeredDate | date}}

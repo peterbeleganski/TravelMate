@@ -1,0 +1,19 @@
+.container
+   table.table.table-responsive.table-striped
+      tr.text-center
+         th Username
+         th email
+         th First Name
+         th Last Name
+         th Current PLace
+         th Phone
+         th Registered
+      tr.text-center(ng-repeat="user in users")
+         td
+            a(href="/users/{{user._id}}") {{user.username}}
+         td {{user.email}}
+         td {{user.firstName}}
+         td {{user.lastName}}
+         td {{user.currentPlace}}
+         td {{user.phone}}
+         td {{user.registeredDate | date}}

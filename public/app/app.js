@@ -48,6 +48,15 @@ app.config(function($routeProvider, $locationProvider){
             controller:'ProfileCtrl',
             resolve:routeUserChecks.authenticated
         })
+        .when('/users-list',{
+            templateUrl:'/partials/account/users-list',
+            controller:'UsersListCtrl',
+            resolve:routeUserChecks.authenticated
+        }).when('/users/:id',{
+            templateUrl: '/partials/account/user-details',
+            controller : 'UserDetailsCtrl',
+            resolve:routeUserChecks.authenticated
+        })
 });
 
 app.run(function($rootScope, $location, notifier) {
