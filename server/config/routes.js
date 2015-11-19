@@ -14,6 +14,8 @@ module.exports = function(app){
     app.put('/api/users',auth.authenticate, controllers.users.updateUser);
 
     app.get('/api/ads', controllers.ads.getAllAds);
+    app.post('/api/ads', controllers.ads.createAd);
+
 
     app.get("/partials/:partialArea/:partialName",function(req,res){
         res.render('../../public/app/'+req.params.partialArea+'/'+ req.params.partialName);

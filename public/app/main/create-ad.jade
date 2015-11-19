@@ -1,2 +1,31 @@
 .container
-    h1 {{test}}
+    h2.text-center Create new Ad
+    form.form-horizontal
+        .row
+            .col-md-6
+                .form-group
+                    label(for="travel_to") Travel to:
+                    input.form-control(id = "travel_to" type="text" name="travelTo" ng-model="ad.travelTo")
+                .form-group
+                    label(for="travel_from") Travel from:
+                    input.form-control(id = "travel_from" type="text" name="travelFrom" ng-model="ad.travelFrom")
+                .form-group
+                    label(for="seats") Seats available
+                    input.form-control(type="number" id = "seats" name="seats" ng-model="ad.seats")
+                .form-group
+                    label(for="travelDate") Date:
+                    input.form-control(type="date" id = "travelDate" name="travelDate" ng-model="ad.date")
+                .form-group
+                    label(for="phone") Phone number:
+                    .row
+                        .col-md-10
+                            input.form-control(type="text" id = "phone" name="phone" ng-model="ad.phone")
+                        .col-md-2
+                            button.btn.btn-sm.btn-info My phone
+                .form-group
+                    .row
+                        .col-md-3
+                            button.btn.btn-default.btn-success Save Changes
+                        .col-md-3
+                            button.btn.btn-default.btn-warning Cancel
+

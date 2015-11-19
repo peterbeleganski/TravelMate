@@ -10,9 +10,10 @@ module.exports = {
             res.send(collection);
         });
     },
-    createAdd: function(req,res,next){
+    createAd: function(req,res,next){
         var adData = req.body;
-
+        console.log(adData);
+        return;
         Ad.create(adData,function(err,ad){
             if(err){
                 console.log(err);
