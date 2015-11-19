@@ -5,7 +5,6 @@ app.controller('LoginCtrl',function($scope, $location, notifier, identity, auth)
             username: $scope.username,
             password: $scope.password
         };
-        console.log(user);
         auth.login(user).then(function(success){
             if(success){
                 notifier.success("Successful login");
