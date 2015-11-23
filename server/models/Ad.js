@@ -3,11 +3,9 @@ var Schema = mongoose.Schema;
 var User = mongoose.model('User');
 var AdSchema = new mongoose.Schema({
     title:{
-        type:String,
-        required:true,
-        trim:true,
-        unique:true,
-        default:''
+      type:String,
+        unique:false,
+        trim:true
     },
     seats: {
         type: Number,
@@ -54,7 +52,7 @@ module.exports.seedInitialAds = function(){
         if(collection.length === 0){
 
             var user = new User({
-                username: 'keksa',
+                username: 'keksa998',
                 firstName: 'Keksa',
                 lastName: 'Keksov',
                 phone: "08935277",
@@ -68,7 +66,6 @@ module.exports.seedInitialAds = function(){
                 }
 
                 var ad = new Ad({
-                    title:"Monday adventures!",
                     seats : 2,
                     date:Date.now(),
                     description:"I am travelling to Plovdiv from Sofia if someone is interested contact with me :)",

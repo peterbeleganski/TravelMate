@@ -1,31 +1,45 @@
 .container
     h2.text-center Create new Ad
-    form.form-horizontal
+    form.form-horizontal(name="createAd" novalidate)
         .row
-            .col-md-6
-                .form-group
-                    label(for="travel_to") Travel to:
-                    input.form-control(id = "travel_to" type="text" name="travelTo" ng-model="ad.travelTo")
-                .form-group
-                    label(for="travel_from") Travel from:
-                    input.form-control(id = "travel_from" type="text" name="travelFrom" ng-model="ad.travelFrom")
-                .form-group
-                    label(for="seats") Seats available
-                    input.form-control(type="number" id = "seats" name="seats" ng-model="ad.seats")
-                .form-group
-                    label(for="travelDate") Date:
-                    input.form-control(type="date" id = "travelDate" name="travelDate" ng-model="ad.date")
-                .form-group
-                    label(for="phone") Phone number:
-                    .row
-                        .col-md-10
-                            input.form-control(type="text" id = "phone" name="phone" ng-model="ad.phone")
-                        .col-md-2
-                            button.btn.btn-sm.btn-info My phone
-                .form-group
-                    .row
-                        .col-md-3
-                            button.btn.btn-default.btn-success(ng-click="createAd(ad)") Save Changes
-                        .col-md-3
-                            button.btn.btn-default.btn-warning Cancel
+            .form-group
+                label(for="travel_to") Travel to:
+                input.form-control(id = "travel_to" type="text" name="travelTo" ng-pattern="/^[A-Za-z]{2,15}$/" required ng-model="ad.travelTo")
+                p.help-block(ng-show="createAd.travelTo.$dirty && createAd.travelTo.$invalid")
+                    span.text-danger Incorrect input!
+            .form-group
+                label(for="travel_from") Travel from:
+                input.form-control(id = "travel_from" type="text" name="travelFrom" ng-pattern="/^[A-Za-z]{2,15}$/" ng-model="ad.travelFrom")
+                p.help-block(ng-show="createAd.travelFrom.$dirty && createAd.travelFrom.$invalid")
+                    span.text-danger Incorrect input!
+            .form-group
+                label(for="seats") Seats available
+                input.form-control(type="number" id = "seats" name="seats" ng-pattern="/^[0-9]+$/" ng-model="ad.seats")
+                p.help-block(ng-show="createAd.seats.$dirty && createAd.seats.$invalid")
+                    span.text-danger Incorrect number!
+
+            .form-group
+                label(for="travelDate") Date:
+                input.form-control(type="date" id = "travelDate" name="travelDate" required ng-model="ad.date")
+                p.help-block(ng-show="createAd.date.$dirty && createAd.date.$invalid")
+                    span.text-danger Required!
+            .form-group
+                label(for="phone") Phone number:
+                .row
+                    .col-md-10
+                        input.form-control(type="text" id = "phone" ng-pattern="/^[0-9]+$/" name="phone" ng-model="ad.phone")
+                        p.help-block(ng-show="createAd.phone.$dirty && createAd.phone.$invalid")
+                         span.text-danger Incorrect phone!
+                    .col-md-2
+                    button.btn.btn-sm.btn-info My phone
+            .form-group
+                textarea.form-control(id="description" name="description" placeholder="description" height="250px" ng-pattern="/^[A-Za-z0-9%$£_/]{5,250}/" ng-model="ad.description")
+                p.help-block(ng-show="createAd.description.$dirty && createAd.description.$invalid")
+                    span.text-danger Please enter description!
+            .form-group
+                .row
+                    .col-md-3
+                        button.btn.btn-default.btn-success(ng-click="createAd(ad)" ng-disabled="createAd.$invalid") Save Changes
+                    .col-md-3
+                        button.btn.btn-default.btn-warning(ng-click="goToHome()") Cancel
 

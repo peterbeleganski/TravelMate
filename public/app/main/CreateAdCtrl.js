@@ -1,4 +1,4 @@
-app.controller('CreateAdCtrl', function($scope, identity, main, notifier){
+app.controller('CreateAdCtrl', function($scope, identity, main, notifier, $location){
    $scope.test = "Create ad view!";
 
    $scope.createAd = function(ad){
@@ -8,7 +8,7 @@ app.controller('CreateAdCtrl', function($scope, identity, main, notifier){
       var data = ad;
       data.user = identity.currUser;
 
-      main.createAd(data).then(function(success){
+      /*main.createAd(data).then(function(success){
          if(success){
             notifier.success("Posted!");
             $location.path('/ads')
@@ -16,6 +16,15 @@ app.controller('CreateAdCtrl', function($scope, identity, main, notifier){
             notifier.err("Oops, you suck!");
          }
       });
+      */
+      main.createAd(data).then(function(){
+         notifier.success("Ad created successful!");
+         $location.path('/ads');
+      });
+   };
+
+   $scope.goToHome = function(){
+      $location.path('/');
    }
 
 });

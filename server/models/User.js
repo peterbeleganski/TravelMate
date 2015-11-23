@@ -13,7 +13,22 @@ var userSchema =  mongoose.Schema({
     phone:{type:String, default:"089832151"},
     registeredDate:{type:Date, default:Date.now()},
     currentPlace:{type:String, default:"Bulgaria"},
-    ads: [{ ad_id:String,ad_title:String}]
+    ads:[{
+        tile:String,
+        seats: String,
+        date:Date,
+        description:String,
+        travelTo:{
+            type:String,
+            required:true,
+            default:''
+        },
+        travelFrom:{
+            type:String,
+            required:true,
+            default:''
+        }
+    }]
 });
 
 
