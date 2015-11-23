@@ -41,4 +41,4 @@ $(document).ready(function(){
         trigger: 'focus'
     });
 
-})
+});

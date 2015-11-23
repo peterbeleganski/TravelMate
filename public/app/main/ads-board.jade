@@ -1,28 +1,39 @@
-#frame
-   div.note.sticky0(ng-repeat="ad in ads")
-      .pin
-      | &#x9;&#x9;&#x9;&#x9;
-      .text
-         p.text-warning.text-center {{ad.user}}
-         span  Travel from {{ad.travelFrom}} to {{ad.travelTo}}
-         p.text.text-muted {{ad.seats}} seats available
-         span
-            button.btn.btn-sm.btn-info Check details
-   div.note.sticky3(ng-repeat="ad in ads")
-      .pin
-      | &#x9;&#x9;&#x9;&#x9;
-      .text
-         p.text-warning.text-center {{ad.user}}
-         span Travel from {{ad.travelFrom}} to {{ad.travelTo}}
-         p.text.text-muted {{ad.seats}} seats available
-         span
-            button.btn.btn-sm.btn-info Check details
-   div.note.sticky1(ng-repeat="ad in ads")
-      .pin
-      | &#x9;&#x9;&#x9;&#x9;
-      .text
-         p.text-warning.text-center {{ad.user}}
-         span Travel from {{ad.travelFrom}} to {{ad.travelTo}}
-         p.text.text-muted {{ad.seats}} seats available
-         span
-            button.btn.btn-sm.btn-info Check details
+.container
+   .row
+      .col-md-9
+         #frame
+            div.note(ng-repeat="ad in ads | startFrom:(currentPage - 1) * pageSize | limitTo:pageSize  | filter:search | orderBy: sort")
+               .pin
+               | &#x9;&#x9;&#x9;&#x9;
+               .text
+                  p.text-warning.text-center {{ad.user}}
+                  span Travel from &nbsp;
+                     b {{ad.travelFrom}} to &nbsp;
+                     b {{ad.travelTo}}
+                  p.text.text-muted
+                   b {{ad.seats}} seats available
+                  span
+                     button.btn.btn-sm.btn-info Check details
+            pagination(total-items="ads.length" page="currentPage" items-per-page="pageSize")
+      .col-md-3
+         .row
+            .col-md-12
+               h4.text-center  Search
+               input.form-control(type="text" placeholder="Search" ng-model="search")
+         .row
+            .col-md-12
+               h4.text-center  Sort by:
+               select.form-control(ng-model="sort")
+                  option(value=" " ng-selected="'true'") Default
+                  option(value="user") User
+                  option(value="-date") Date published
+         .row
+            .col-md-12
+               h4.text-center  Enter start destination
+               input.form-control(type="text" placeholder="Search" ng-model="searchStart")
+         .row
+            .col-md-12
+               h4.text-center  Enter final destination
+               input.form-control(type="text" placeholder="Search" ng-model="searchFinal")
+
+script(src="/app/main/style-notes.js" type="text/javascript")

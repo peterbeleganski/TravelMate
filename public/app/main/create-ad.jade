@@ -4,12 +4,12 @@
         .row
             .form-group
                 label(for="travel_to") Travel to:
-                input.form-control(id = "travel_to" type="text" name="travelTo" ng-pattern="/^[A-Za-z]{2,15}$/" required ng-model="ad.travelTo")
+                input.form-control(id = "travel_to" type="text" name="travelTo"  required ng-model="ad.travelTo")
                 p.help-block(ng-show="createAd.travelTo.$dirty && createAd.travelTo.$invalid")
                     span.text-danger Incorrect input!
             .form-group
                 label(for="travel_from") Travel from:
-                input.form-control(id = "travel_from" type="text" name="travelFrom" ng-pattern="/^[A-Za-z]{2,15}$/" ng-model="ad.travelFrom")
+                input.form-control(id = "travel_from" type="text" name="travelFrom" required ng-model="ad.travelFrom")
                 p.help-block(ng-show="createAd.travelFrom.$dirty && createAd.travelFrom.$invalid")
                     span.text-danger Incorrect input!
             .form-group
@@ -33,13 +33,11 @@
                     .col-md-2
                     button.btn.btn-sm.btn-info My phone
             .form-group
-                textarea.form-control(id="description" name="description" placeholder="description" height="250px" ng-pattern="/^[A-Za-z0-9%$£_/]{5,250}/" ng-model="ad.description")
-                p.help-block(ng-show="createAd.description.$dirty && createAd.description.$invalid")
-                    span.text-danger Please enter description!
+                textarea.form-control(id="description" name="description" placeholder="description" height="250px" required ng-model="ad.description")
             .form-group
                 .row
                     .col-md-3
-                        button.btn.btn-default.btn-success(ng-click="createAd(ad)" ng-disabled="createAd.$invalid") Save Changes
+                        button.btn.btn-default.btn-success(ng-click="create(ad)") Save Changes
                     .col-md-3
                         button.btn.btn-default.btn-warning(ng-click="goToHome()") Cancel
 

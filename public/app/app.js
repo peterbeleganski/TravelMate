@@ -1,4 +1,4 @@
-var app = angular.module('app',['ngResource','ngRoute','ngAnimate']).value('toastr',toastr);
+var app = angular.module('app',['ngResource','ui.bootstrap','ngRoute','ngAnimate']).value('toastr',toastr);
 
 app.config(function($routeProvider, $locationProvider){
     var routeUserChecks = {
@@ -13,7 +13,6 @@ app.config(function($routeProvider, $locationProvider){
             }
         }
     };
-
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
@@ -29,7 +28,8 @@ app.config(function($routeProvider, $locationProvider){
         })
         .when('/create-ad',{
             templateUrl: '/partials/main/create-ad',
-            controller : 'CreateAdCtrl'
+            controller : 'CreateAdCtrl',
+            resolve:routeUserChecks.authenticated
         })
         .when('/sign-up',{
             templateUrl: '/partials/account/sign-up',
@@ -58,6 +58,8 @@ app.config(function($routeProvider, $locationProvider){
             resolve:routeUserChecks.authenticated
         })
 });
+
+
 
 app.run(function($rootScope, $location, notifier) {
     $rootScope.$on('$routeChangeError', function(ev, current, previous, rejection) {
