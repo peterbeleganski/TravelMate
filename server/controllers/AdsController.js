@@ -2,6 +2,15 @@ var Ad = require('mongoose').model('Ad');
 var User = require('mongoose').model('User');
 
 module.exports = {
+    getAdById : function (req,res,next) {
+        Ad.findOne({_id: req.params.id}).exec(function(err, ad){
+            if(err){
+                console.log(err);
+                return;
+            }
+            res.send(ad);
+        });
+    },
     getAllAds: function(req,res){
         Ad.find({}).exec(function(err,collection){
             if(err){

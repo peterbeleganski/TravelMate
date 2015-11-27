@@ -14,6 +14,7 @@ module.exports = function(app){
     app.put('/api/users',auth.authenticate, controllers.users.updateUser);
 
     app.get('/api/ads', controllers.ads.getAllAds);
+    app.get('/api/ads/:id', controllers.ads.getAdById);
     app.post('/api/ads', controllers.ads.createAd);
 
 
@@ -32,4 +33,4 @@ module.exports = function(app){
 
     app.post('/login',auth.login);
     app.post('/logout', auth.logout);
-}
+};

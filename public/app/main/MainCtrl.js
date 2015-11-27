@@ -1,4 +1,4 @@
-app.controller('MainCtrl',function($scope, MainResource){
+app.controller('MainCtrl',function($scope, MainResource, $location){
     $scope.pesho = "232131321";
 
     $scope.ads = MainResource.query();
@@ -7,4 +7,8 @@ app.controller('MainCtrl',function($scope, MainResource){
     $scope.pageSize = 6;
     $scope.currentPage = 1;
     $scope.size = $scope.ads.length;
+
+    $scope.logAd = function(ad){
+        $location.path('/ads/' + ad._id);
+    }
 });

@@ -13,7 +13,7 @@
                   p.text.text-muted
                    b {{ad.seats}} seats available
                   span
-                     button.btn.btn-sm.btn-info Check details
+                     button.btn.btn-sm.btn-info(ng-click="logAd(ad)") Check details
             pagination(total-items="ads.length" page="currentPage" items-per-page="pageSize")
       .col-md-3
          .row
@@ -35,5 +35,6 @@
             .col-md-12
                h4.text-center  Enter final destination
                input.form-control(type="text" placeholder="Search" ng-model="searchFinal")
+
 
 script(src="/app/main/style-notes.js" type="text/javascript")

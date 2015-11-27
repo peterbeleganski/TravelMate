@@ -35,10 +35,6 @@ app.config(function($routeProvider, $locationProvider){
             templateUrl: '/partials/account/sign-up',
             controller: 'SignUpCtrl'
         })
-        .when('/view',{
-            templateUrl: '/partials/home/view-laptop',
-            controller: 'HomeCtrl'
-        })
         .when('/login',{
             templateUrl: '/partials/account/login',
             controller: 'LoginCtrl'
@@ -57,6 +53,13 @@ app.config(function($routeProvider, $locationProvider){
             controller : 'UserDetailsCtrl',
             resolve:routeUserChecks.authenticated
         })
+        .when('/ads/:id',{
+            templateUrl: '/partials/main/details',
+            controller : 'DetailsCtrl',
+            resolve:routeUserChecks.authenticated
+        }).otherwise({
+            redirectTo: '/'
+        });
 });
 
 
