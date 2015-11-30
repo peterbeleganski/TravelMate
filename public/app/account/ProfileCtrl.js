@@ -1,4 +1,4 @@
-app.controller('ProfileCtrl', function($scope, identity, $location, notifier, auth, UsersResource){
+app.controller('ProfileCtrl', function($scope, identity, $location, notifier, auth, UsersResource, Upload, $http){
     $scope.user = identity.currUser;
 
     $scope.GoToAds = function(){
@@ -16,7 +16,34 @@ app.controller('ProfileCtrl', function($scope, identity, $location, notifier, au
             notifier.success("Profile updated!");
         });
     };
-
+    $scope.image = "https://www.plexusmd.com/PlexusMDAPI//Images/ProfilePicture/default_profile.jpg";
     $scope.users = UsersResource.query();
     console.log($scope.users);
+
+    $scope.$watch(function(){
+        return $scope.file;
+    }, function(){
+        $scope.upload($scope.file);
+    });
+
+    $scope.upload = function(file){
+        if(file){
+            Upload.upload({
+                url:'/api/editPhoto',
+                method:'POST',
+                data :{
+                    userId:$scope.user._id,
+                    file:file
+                }
+            }).progress(function(evt) {
+                console.log("Firing");
+            }).success(function(data){
+                notifier.success("Image uploaded!");
+                $scope.user.image = data.image;
+            }).error(function(err){
+                console.log(err);
+                $scope.image = "https://www.plexusmd.com/PlexusMDAPI//Images/ProfilePicture/default_profile.jpg";
+            })
+        }
+    };
 });

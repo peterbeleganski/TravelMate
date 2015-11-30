@@ -2,6 +2,8 @@ var passport = require('passport'),
     auth = require('./auth'),
     controllers = require('../controllers'),
     mongoose = require('mongoose');
+var multipart = require('connect-multiparty');
+var multipartMiddleware = multipart();
 
 var User = mongoose.model('User');
 module.exports = function(app){
@@ -12,6 +14,7 @@ module.exports = function(app){
 
     app.post('/api/users',controllers.users.createUser);
     app.put('/api/users',auth.authenticate, controllers.users.updateUser);
+    app.post('/api/editPhoto', multipartMiddleware, controllers.users.updatePhoto);
 
     app.get('/api/ads', controllers.ads.getAllAds);
     app.get('/api/ads/:id', controllers.ads.getAdById);

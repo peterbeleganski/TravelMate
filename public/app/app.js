@@ -1,4 +1,4 @@
-var app = angular.module('app',['ngResource','ui.bootstrap','ngRoute','ngAnimate']).value('toastr',toastr);
+var app = angular.module('app',['ngResource','ui.bootstrap','ngRoute','ngAnimate','ngFileUpload']).value('toastr',toastr);
 
 app.config(function($routeProvider, $locationProvider){
     var routeUserChecks = {

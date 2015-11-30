@@ -1,5 +1,7 @@
 var User = require('mongoose').model('User');
 var encrypt = require('../utilities/encrypt');
+var fs = require('fs-extra');
+var path = require('path');
 
 module.exports = {
     getAllUsers: function(req,res){
@@ -51,6 +53,37 @@ module.exports = {
         }else{
             res.send({reason:'Because!'});
         }
+    },
+    updatePhoto: function(req,res){
+        var file = req.files.file;
+        var userId = req.body.userId;
+
+        console.log("User " + userId + " is submitting " , file);
+
+
+        var tempPath = file.path;
+        var targetPath = path.join(__dirname, "../../public/img/" + userId + file.name);
+        var savePath = "/img/" + userId + file.name;
+
+        fs.rename(tempPath, targetPath, function (err){
+            if (err){
+                console.log(err)
+            } else {
+                User.findById(userId, function(err, userData){
+                    var user = userData;
+                    user.image = savePath;
+                    user.save(function(err){
+                        if (err){
+                            console.log("failed save");
+                            res.json({status: 500})
+                        } else {
+                            console.log("save successful");
+                            res.json(user);
+                        }
+                    })
+                })
+            }
+        })
     }
 };
 

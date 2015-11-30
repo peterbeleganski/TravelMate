@@ -1,4 +1,9 @@
 app.controller('DetailsCtrl', function($scope, $routeParams, MainResource){
     $scope.ad = MainResource.get({id : $routeParams.id});
-    console.log($scope.ad);
+
+    $scope.km=0.0;
+    this.myFunc = function() {
+        $scope.km = this.directions.routes[0].legs[0].distance.text;
+    };
+
 });
