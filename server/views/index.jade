@@ -28,6 +28,8 @@ block main-content
                             a(href='/sign-up') Register
                         li(ng-hide="identity.isAuthenticated()")
                             a(href="/login") Login
+                        li(ng-show="identity.isAuthenticated()")
+                            a(href="/chat") Online chat
                     div(ng-include="'partials/account/user-navbar'")
 
 

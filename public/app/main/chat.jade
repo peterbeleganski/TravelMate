@@ -1,0 +1,20 @@
+.container
+   .row
+      .col-xs-8.chat-window
+         ul
+            li(ng-repeat='message in messages')
+               span.username {{message.username}}
+               span.message {{message.message}}
+      .col-xs-4.user-window
+         span.text-success Users in chat
+         ul
+            li(ng-repeat='user in users')
+               span.text-muted {{user}}
+      .row
+         form.form-horizontal
+            .form-group
+               label.col-sm-1(for='chatInput') Chat
+               .col-sm-8
+                  input#chatInput.form-control(type='text', placeholder='Enter Text Here...', ng-model='msg')
+               .col-sm-3
+                  button.btn.btn-primary(type='submit', ng-click='sendMessage(msg)') Send Message

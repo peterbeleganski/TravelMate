@@ -1,4 +1,4 @@
-var app = angular.module('app',['ngResource','ui.bootstrap','ngRoute','ngAnimate','ngFileUpload']).value('toastr',toastr);
+var app = angular.module('app',['ngResource','ui.bootstrap','ngRoute','ngAnimate','ngFileUpload','btford.socket-io']).value('toastr',toastr);
 
 app.config(function($routeProvider, $locationProvider){
     var routeUserChecks = {
@@ -21,6 +21,10 @@ app.config(function($routeProvider, $locationProvider){
         .when('/',{
             templateUrl: '/partials/home/home',
             controller : 'MainCtrl'
+        })
+        .when('/test', {
+            templateUrl:'/partials/main/static.html',
+            controller:"MainCtrl"
         })
         .when('/ads',{
             templateUrl:'/partials/main/ads-board',
@@ -57,8 +61,9 @@ app.config(function($routeProvider, $locationProvider){
             templateUrl: '/partials/main/details',
             controller : 'DetailsCtrl',
             resolve:routeUserChecks.authenticated
-        }).otherwise({
-            redirectTo: '/'
+        }).when('/chat',{
+            templateUrl: '/partials/main/chat',
+            controller : 'chatCtrl'
         });
 });
 

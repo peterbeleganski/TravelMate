@@ -8,6 +8,8 @@ var multipartMiddleware = multipart();
 
 module.exports = function(app,config){
 
+
+
     app.set('view engine','jade');
     app.set('views',config.development.rootPath + '/server/views');
     app.use(cookieParser());

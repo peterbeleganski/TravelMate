@@ -57,20 +57,96 @@
   margin: 0 auto;
 }
 
-html,
-body {
-  width: 100%;
+html, body {
   height: 100%;
+  margin: 0;
   padding: 0;
-  margin: 0
 }
-
-body {
-  padding: 5px
+#map {
+  height: 100%;
 }
-
-* {
+.controls {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
   box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
+#origin-input,
+#destination-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 200px;
+}
+
+#origin-input:focus,
+#destination-input:focus {
+  border-color: #4d90fe;
+}
+
+#mode-selector {
+  color: #fff;
+  background-color: #4d90fe;
+  margin-left: 12px;
+  padding: 5px 11px 0px 11px;
+}
+
+#mode-selector label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+#about-image {
+  border-style: solid;
+  border-color: black;
+  border-width: 5px;
+}
+#about h2 {
+  border-bottom: 2px solid black;
+}
+p {
+  text-indent: 40px;
+}
+
+tr.ng-enter{
+  animation: fadeIn 1s;
+}
+
+/*tr.ng-leave{*/
+/*    animation: slideOutLeft 1s;*/
+/*}*/
+
+#customer-table{
+  height: 400px;
+}
+
+.user-window{
+  border-left: 2px solid black;
+  height: 300px;
+}
+.username{
+  color: red;
+  font-weight: bold;
+  margin:6px;
+}
+
+.chat-window{
+  height: 300px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+ul {
+  list-style-type: none;
+}
 

@@ -11,4 +11,8 @@ app.controller('MainCtrl',function($scope, MainResource, $location){
     $scope.logAd = function(ad){
         $location.path('/ads/' + ad._id);
     }
+
+    $scope.goToAds = function(){
+        $location.path('/ads');
+    }
 });
