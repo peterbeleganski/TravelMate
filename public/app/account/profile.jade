@@ -1,7 +1,8 @@
 .container
    .row
       .col-md-4
-         img(src="{{user.image || image}}" width="300" height="270")
+         img(ng-show="showByteImage()" ng-src="data:image/*;base64,{{user.image}}" id="photo-id" width="300" height="270" alt="https://www.plexusmd.com/PlexusMDAPI//Images/ProfilePicture/default_profile.jpg")
+         img(ng-hide="showByteImage()" src="{{image}}" width="300" height="270")
          div
             br
             br
@@ -41,5 +42,8 @@
                   button.btn.btn-danger(id="cancelBTN" ng-click="GoToAds()") CANCEL
 
    .row
+      div(id="user-id" style="display:none") {{user._id}}
+      h2#result
 
 script(src="/app/account/edit-profile-client-script.js" type="text/javascript")
+

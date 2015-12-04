@@ -26,6 +26,14 @@ app.controller('ProfileCtrl', function($scope, identity, $location, notifier, au
         $scope.upload($scope.file);
     });
 
+    $scope.showByteImage = function(){
+        if($scope.user.image === 'no image'){
+            return false;
+        }else{
+            return true;
+        }
+    };
+
     $scope.upload = function(file){
         if(file){
             Upload.upload({
@@ -39,11 +47,21 @@ app.controller('ProfileCtrl', function($scope, identity, $location, notifier, au
                 console.log("Firing");
             }).success(function(data){
                 notifier.success("Image uploaded!");
-                $scope.user.image = data.image;
+                getImg();
             }).error(function(err){
                 console.log(err);
                 $scope.image = "https://www.plexusmd.com/PlexusMDAPI//Images/ProfilePicture/default_profile.jpg";
             })
         }
     };
+
+    var getImg = function(){
+        $http.get("/api/img/" + identity.currUser._id)
+            .then(function(response) {
+                console.log(response);
+                $scope.user.image = response.data.data;
+            });
+    };
+
+    getImg();
 });

@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var encryption = require('../utilities/encrypt');
+var fs = require('fs');
+var path = require('path');
 var Schema = mongoose.Schema;
 
 var userSchema =  mongoose.Schema({
@@ -29,8 +31,9 @@ var userSchema =  mongoose.Schema({
             default:''
         }
     }],
-    image:{
-        type: String
+    img: {
+        data: Buffer,
+        contentType: String
     }
 });
 
@@ -54,13 +57,32 @@ module.exports.seedInitialUsers = function(){
             console.log(err);
             return;
         }
-
-        if(collection.length === 0){
+        if(collection.length === 0 ){
             var salt;
             var hashedPwd;
             salt = encryption.generateSalt();
             hashedPwd = encryption.generateHashedPassword(salt,'pepi');
-            User.create({username:'pepi',firstName:'Peter',lastName:'Beleganski',salt:salt,hashPass:hashedPwd,roles:['admin'],phone:"0898432688",currentPlace:"plovdiv"});
+            var targetPath = path.join(__dirname, "../../public/img/js1.png");
+            var user = new User;
+            user.username = "test";
+            user.firstName ='test';
+            user.lastName = "test";
+            user.salt = salt;
+            user.hashPass = hashedPwd;
+            user.roles.push("admin");
+            user.phone = "0898432688";
+            user.currentPlace ="plovdiv";
+            user.img.data = fs.readFileSync(targetPath);
+            user.img.contentType = 'image/png';
+            //User.create(user);
+            user.save(function(err, data){
+                if(err){
+                    console.log(err);
+                    return;
+                }
+                console.log("Image saved to database:");
+                console.log(data);
+            });
 
             salt = encryption.generateSalt();
             hashedPwd = encryption.generateHashedPassword(salt,'pesho');

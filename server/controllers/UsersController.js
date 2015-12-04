@@ -60,30 +60,25 @@ module.exports = {
 
         console.log("User " + userId + " is submitting " , file);
 
-
         var tempPath = file.path;
-        var targetPath = path.join(__dirname, "../../public/img/" + userId + file.name);
-        var savePath = "/img/" + userId + file.name;
 
-        fs.rename(tempPath, targetPath, function (err){
-            if (err){
-                console.log(err)
-            } else {
-                User.findById(userId, function(err, userData){
-                    var user = userData;
-                    user.image = savePath;
-                    user.save(function(err){
-                        if (err){
-                            console.log("failed save");
-                            res.json({status: 500})
-                        } else {
-                            console.log("save successful");
-                            res.json(user);
-                        }
-                    })
-                })
+        User.findOne({_id:userId}).exec(function(err, user){
+            if(err){
+                console.log(err);
+                return;
             }
-        })
+            user.img.data =  fs.readFileSync(tempPath);
+            user.img.contentType = file.type;
+            user.save(function(err, data){
+                if(err){
+                    console.log(err);
+                    return;
+                }
+                console.log("Image saved to database:");
+               // console.log(data);
+                res.send(data);
+            });
+        });
     }
 };
 

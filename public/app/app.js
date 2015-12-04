@@ -23,7 +23,7 @@ app.config(function($routeProvider, $locationProvider){
             controller : 'MainCtrl'
         })
         .when('/test', {
-            templateUrl:'/partials/main/static.html',
+            templateUrl:'/partials/main/test',
             controller:"MainCtrl"
         })
         .when('/ads',{

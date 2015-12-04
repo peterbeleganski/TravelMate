@@ -6,8 +6,30 @@
     .jumbotron
         .row
             .col-md-6
+
                 img.heading-pic(src="http://i.huffpost.com/gen/1637523/thumbs/o-TRAVEL-facebook.jpg")
             .col-md-6
                 h2 Welcome to TravelMate!
                 button.btn.btn-lg.btn-success(ng-click="goToAds()") Find your mate
-                a.btn.btn-lg.primary(href="http://localhost:63344/TravelPlatform/public/app/home/test.html") ViewMap
+.container
+    hr
+    .row
+        br
+        .col-md-5(ng-controller="GalleryCtrl")
+            div
+                carousel(interval="myInterval")
+                    slide(ng-repeat="slide in slides", active="slide.active")
+                        img(ng-src="{{slide.image}}" style="margin:auto;width:320px;height:220px;")
+                        .carousel-caption
+
+
+        .col-md-7.text-center
+            p.text-list Why to use TravelMate ?
+            blockquote.text-left
+                p TravelMate is online platform developed for people who want to find Travel Assistant
+                small Sign up for free!
+                a.btn-sm.btn-primary(href="/sign-up") Sign up
+    br
+    hr
+    br
+

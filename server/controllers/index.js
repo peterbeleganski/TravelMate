@@ -6,4 +6,4 @@ module.exports = {
     users: UsersController,
     upload:UploadController,
     ads:AdsController
-}
+};

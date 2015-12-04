@@ -21,6 +21,22 @@ module.exports = function(app){
     app.post('/api/ads', controllers.ads.createAd);
 
 
+    app.get('/api/img/:id', function(req,res, next){
+        User.findById({_id:req.params.id}, function (err, doc) {
+            if (err) return next(err);
+            //res.contentType(doc.img.contentType);
+            if(doc.img.data === undefined){
+                res.send({data:"no image"})
+            }else{
+                var base64 = (doc.img.data.toString('base64'));
+                res.send({data:base64});
+                // res.send(doc.img.data);
+            }
+
+        });
+    });
+
+
     app.get("/partials/:partialArea/:partialName",function(req,res){
         res.render('../../public/app/'+req.params.partialArea+'/'+ req.params.partialName);
     });
