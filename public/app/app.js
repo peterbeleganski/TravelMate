@@ -1,4 +1,4 @@
-var app = angular.module('app',['ngResource','ui.bootstrap','ngRoute','ngAnimate','ngFileUpload','btford.socket-io']).value('toastr',toastr);
+var app = angular.module('ngMap',['ngResource','ui.bootstrap','ngRoute','ngAnimate','ngFileUpload','btford.socket-io','ngMap']).value('toastr',toastr);
 
 app.config(function($routeProvider, $locationProvider){
     var routeUserChecks = {

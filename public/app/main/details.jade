@@ -1,110 +1,23 @@
-style.
-    html, body {
-        height: 98%;
-        margin: 0;
-        padding: 0;
-    }
-    #map {
-        height: 100%;
-        float: left;
-        width: 70%;
-    }
-    #right-panel {
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-    }
-
-    #right-panel select, #right-panel input {
-        font-size: 15px;
-    }
-
-    #right-panel select {
-        width: 100%;
-    }
-
-    #right-panel i {
-        font-size: 12px;
-    }
-
-    #right-panel {
-        margin: 20px;
-        border-width: 2px;
-        width: 20%;
-        float: left;
-        text-align: left;
-        padding-top: 20px;
-    }
-    #directions-panel {
-        margin-top: 20px;
-        background-color: #FFEE77;
-        padding: 10px;
-    }
 .container
-    #map
-    #right-panel
-        div
-            b Start:
-            input(type="text" id="start")
-            br
-            br
-            b Waypoints:
-            br
-            input(type="text" id="end")
-            br
-            input(type="submit" id="submit")
-        div(id="directions-panel")
-script.
-    function initMap() {
-        var directionsService = new google.maps.DirectionsService;
-        var directionsDisplay = new google.maps.DirectionsRenderer;
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 6,
-            center: {lat: 41.85, lng: -87.65}
-        });
-        directionsDisplay.setMap(map);
+    .jumbotron
+        .row
+            .col-md-6
+                pre.text-center Travel From &nbsp;
+                    strong {{ad.travelFrom}}
+                pre.text-center Travel To &nbsp;
+                    strong {{ad.travelTo}}
+                pre.text-center Details:  &nbsp;
+                    strong {{ad.description}}
+                pre.text-center Date &nbsp;
+                    strong {{ad.date | date}}
+                pre.text-center Seats available &nbsp;
+                    strong {{ad.seats}}
+            .col-md-6
+                img(ng-show="showByteImage()" ng-src="data:image/*;base64,{{user.image}}" id="photo-id" width="300" height="270" alt="https://www.plexusmd.com/PlexusMDAPI//Images/ProfilePicture/default_profile.jpg")
+                img(ng-hide="showByteImage()" src="{{image}}" width="320" height="230")
+                br
+                br
+                span
+                    a.btn.btn-sm.btn-primary(ng-click="showUserImg(ad.user_id)" href="#") Show user image
 
-        document.getElementById('submit').addEventListener('click', function() {
-            calculateAndDisplayRoute(directionsService, directionsDisplay);
-        });
-    }
-
-    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-        var waypts = [];
-        var checkboxArray = document.getElementById('waypoints');
-        for (var i = 0; i < checkboxArray.length; i++) {
-            if (checkboxArray.options[i].selected) {
-                waypts.push({
-                    location: checkboxArray[i].value,
-                    stopover: true
-                });
-            }
-        }
-
-        directionsService.route({
-            origin: document.getElementById('start').value,
-            destination: document.getElementById('end').value,
-            waypoints: waypts,
-            optimizeWaypoints: true,
-            travelMode: google.maps.TravelMode.DRIVING
-        }, function(response, status) {
-            if (status === google.maps.DirectionsStatus.OK) {
-                directionsDisplay.setDirections(response);
-                var route = response.routes[0];
-                var summaryPanel = document.getElementById('directions-panel');
-                summaryPanel.innerHTML = '';
-                // For each route, display summary information.
-                for (var i = 0; i < route.legs.length; i++) {
-                    var routeSegment = i + 1;
-                    summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
-                            '</b><br>';
-                    summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
-                    summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
-                    summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
-                }
-            } else {
-                window.alert('Directions request failed due to ' + status);
-            }
-        });
-    }
-script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACU8SF9Ekfg5HhX3yVP-DIPjBhQ6P5k0U&signed_in=true&callback=initMap" async defer)
+    //pre {{ad}}
