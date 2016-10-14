@@ -4,6 +4,10 @@
   src: url("../lib/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix") format('embedded-opentype'), url("../lib/bootstrap/fonts/glyphicons-halflings-regular.woff") format('woff'), url("../lib/bootstrap/fonts/glyphicons-halflings-regular.ttf") format('truetype'), url("../lib/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular") format('svg');
 }
 
+body{
+  font-family:  sans-serif;
+}
+
 [ui-view].ng-enter,
 [ui-view].ng-leave {
   position: absolute;
@@ -113,4 +117,22 @@ tr.ng-enter{
 ul {
   list-style-type: none;
 }
+
+.dd{
+  height: 25%;
+}
+
+body {
+  padding: 30px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+h2 {
+  margin:0 0 .5em 0;
+}
+#map {
+  width:500px;
+  height:500px
+}
+
 

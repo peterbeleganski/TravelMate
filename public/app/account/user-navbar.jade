@@ -5,8 +5,8 @@
             span.caret
          ul.dropdown-menu
             li(ng-show="identity.currUser.isAdmin()")
-               a(href="/users-list") Users
+               a(href="#/users-list") Users
             li(ng-show="identity.isAuthenticated()")
-               a(href="/profile") Profile
+               a(href="#/profile") Profile
             li
                a(href="" ng-click="logout()") Sign out

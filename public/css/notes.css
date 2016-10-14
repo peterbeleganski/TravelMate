@@ -1,3 +1,9 @@
+@import url(//fonts.googleapis.com/css?family=Architects+Daughter);
+
+*, h2,h3{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
 
 div#frame {
     background: url(cork_board.gif) no-repeat;

@@ -16,6 +16,7 @@ var userSchema =  mongoose.Schema({
     registeredDate:{type:Date, default:Date.now()},
     currentPlace:{type:String, default:"Bulgaria"},
     ads:[{
+        ad_id:String,
         tile:String,
         seats: String,
         date:Date,

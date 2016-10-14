@@ -10,7 +10,7 @@
          th Registered
       tr.text-center(ng-repeat="user in users")
          td
-            a(href="/users/{{user._id}}") {{user.username}}
+            a(href="#/users/{{user._id}}") {{user.username}}
          td {{user.email}}
          td {{user.firstName}}
          td {{user.lastName}}

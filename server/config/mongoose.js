@@ -3,7 +3,7 @@ var user = require('../models/User');
 var ad = require('../models/Ad');
 
 module.exports = function(config){
-    mongoose.connect(config.development.db);
+    mongoose.connect(config.production.db);
 
     var db = mongoose.connection;
     db.once('open',function(err){

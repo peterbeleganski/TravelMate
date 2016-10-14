@@ -13,9 +13,10 @@ module.exports = function(app,config){
     app.set('view engine','jade');
     app.set('views',config.development.rootPath + '/server/views');
     app.use(cookieParser());
-    app.use(bodyParser.json());
+
+    app.use(bodyParser.json({limit: '50mb'}));
+    app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
     app.use(multipartMiddleware);
-    app.use(bodyParser.urlencoded({extended: true}));
     app.use(session({secret:'shopska salata',resave:true,saveUninitialized:true}));
     app.use('/uploads', express.static(__dirname + "/uploads"));
 

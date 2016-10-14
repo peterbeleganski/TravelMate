@@ -1,6 +1,9 @@
 app.controller('ProfileCtrl', function($scope, identity, $location, notifier, auth, UsersResource, Upload, $http){
     $scope.user = identity.currUser;
 
+    $scope.image = "https://www.plexusmd.com/PlexusMDAPI//Images/ProfilePicture/default_profile.jpg";
+    $scope.user.image = "no image";
+
     $scope.GoToAds = function(){
         $location.path('/ads');
     };
@@ -62,6 +65,5 @@ app.controller('ProfileCtrl', function($scope, identity, $location, notifier, au
                 $scope.user.image = response.data.data;
             });
     };
-
     getImg();
 });

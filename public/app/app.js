@@ -13,10 +13,7 @@ app.config(function($routeProvider, $locationProvider){
             }
         }
     };
-    $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
-    });
+
     $routeProvider
         .when('/',{
             templateUrl: '/partials/home/home',
@@ -57,13 +54,15 @@ app.config(function($routeProvider, $locationProvider){
             controller : 'UserDetailsCtrl',
             resolve:routeUserChecks.authenticated
         })
-        .when('/ads/:id',{
+        .when('/adverts/view/details/:id',{
             templateUrl: '/partials/main/details',
             controller : 'DetailsCtrl',
             resolve:routeUserChecks.authenticated
         }).when('/chat',{
             templateUrl: '/partials/main/chat',
             controller : 'chatCtrl'
+        }).otherwise({
+            redirect: '/'
         });
 });
 

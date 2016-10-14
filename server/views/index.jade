@@ -14,22 +14,22 @@ block main-content
 
                         span.icon-bar
 
-                    a.navbar-brand(href='/') TravelMate
+                    a.navbar-brand(href='#/') TravelMate
 
                 #js-navbar-collapse.collapse.navbar-collapse
                     ul.nav.navbar-nav
                         li
-                            a(href='/') Home
+                            a(href='#/') Home
                         li
-                            a(href='/ads') Ads
+                            a(href='#/ads') Ads
                         li(ng-show="identity.isAuthenticated()")
-                            a(href='/create-ad') Create Ad
+                            a(href='#/create-ad') Create Ad
                         li(ng-show="!identity.isAuthenticated()")
-                            a(href='/sign-up') Register
+                            a(href='#/sign-up') Register
                         li(ng-hide="identity.isAuthenticated()")
-                            a(href="/login") Login
+                            a(href="#/login") Login
                         li(ng-show="identity.isAuthenticated()")
-                            a(href="/chat") Online chat
+                            a(href="#/chat") Online chat
                     div(ng-include="'partials/account/user-navbar'")
 
 

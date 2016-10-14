@@ -20,6 +20,11 @@ var AdSchema = new mongoose.Schema({
         default:Date.now(),
         required:true
     },
+    dateCreated:{
+        type:Date,
+        default:Date.now(),
+        required:true
+    },
     description:{
         type:String
     },
@@ -38,7 +43,19 @@ var AdSchema = new mongoose.Schema({
         require:true,
         default:"unknown user"
     },
-    user_id:String
+    user_id: {
+        type: String
+    },
+    visited:{
+      type: Number,
+        default: 0
+    },
+    comments:[{
+        user_id : String,
+        username:String,
+        body:String,
+        date:{type:Date, default:Date.now(), required:true}
+    }]
 });
 
 var Ad = mongoose.model('Ad',AdSchema);
@@ -72,7 +89,15 @@ module.exports.seedInitialAds = function(){
                     travelTo:"Sofia",
                     travelFrom:"Plovdiv",
                     user:user.username,
-                    user_id:user._id
+                    user_id:user._id,
+                    comments:[
+                        {
+                            user_id: user._id,
+                            username:user.username,
+                            body:"Mnogo dobra oferta"
+                        }
+
+                    ]
                 });
 
                 ad.save(function(err){

@@ -1,40 +1,53 @@
-.container
+.container()
    .row
-      .col-md-9
-         #frame
-            div.note(ng-repeat="ad in ads | startFrom:(currentPage - 1) * pageSize | limitTo:pageSize  | filter:search | orderBy: sort")
-               .pin
-               | &#x9;&#x9;&#x9;&#x9;
-               .text
-                  p.text-warning.text-center {{ad.user}}
-                  span Travel from &nbsp;
-                     b {{ad.travelFrom}} to &nbsp;
-                     b {{ad.travelTo}}
-                  p.text.text-muted
-                   b {{ad.seats}} seats available
-                  span
-                     button.btn.btn-sm.btn-info(ng-click="logAd(ad)") Check details
-            pagination(total-items="ads.length" page="currentPage" items-per-page="pageSize")
-      .col-md-3
+      .col-md-12
          .row
-            .col-md-12
+            .col-md-6
                h4.text-center  Search
                input.form-control(type="text" placeholder="Search" ng-model="search")
-         .row
-            .col-md-12
+            .col-md-6
                h4.text-center  Sort by:
                select.form-control(ng-model="sort")
                   option(value=" " ng-selected="'true'") Default
                   option(value="user") User
                   option(value="-date") Date published
-         .row
-            .col-md-12
-               h4.text-center  Enter start destination
-               input.form-control(type="text" placeholder="Search" ng-model="searchStart")
-         .row
-            .col-md-12
-               h4.text-center  Enter final destination
-               input.form-control(type="text" placeholder="Search" ng-model="searchFinal")
+   br
+   br
+   hr
+   .row
+      .col-md-6(ng-repeat="ad in ads | startFrom:(currentPage - 1) * pageSize | limitTo:pageSize  | filter:search | orderBy: sort" ng-show="ad._id")
+         .panel-group
+            .panel.panel-info
+               .panel-heading
+                  p.text-default.text-center {{ad.user}}
+               .panel-body
+                  .row
+                     .col-md-6
+                        span  &nbsp;
+                           p.text-justify  From:  &nbsp;
+                              b.text-uppercase {{ad.travelFrom}}  &nbsp;
+                           p To:
+                              b.text-uppercase {{ad.travelTo}}
+                        p.text-nowrap Seats available: &nbsp;
+                           b {{ad.seats}}
+                        p.text-warning  Date: {{ad.date | date }}
+                        p.text-muted Published on:  {{ad.dateCreated | date}}
+                        button.btn.btn-sm.btn-info(ng-click="logAd(ad)")
+                           span.glyphicon.glyphicon-th-large  Details
+                        span &nbsp; &nbsp;
+                        button.btn.btn-sm.btn-danger(ng-show="identity.currUser.isAdmin()" ng-click="deleteAd(ad)")
+                           span.glyphicon.glyphicon-remove &nbsp;Delete
+                     .col-md-6
+                        img(src="/img/travel-car.png" width="100%")
+                        .row
+                           .col-md-1
+                              button.btn.btn-sm.btn-warning(ng-show="identity.currUser.isAdmin()" ng-hide="!validateDates(ad.date)" style="margin-top:36px;" disabled)
+                                 span.glyphicon.glyphicon-time &nbsp; Outdated
 
+   pagination(total-items="ads.length" page="currentPage" items-per-page="pageSize")
 
 script(src="/app/main/style-notes.js" type="text/javascript")
+script.
+
+
+

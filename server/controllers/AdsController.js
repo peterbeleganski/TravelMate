@@ -36,31 +36,68 @@ module.exports = {
         //console.log(newAdd);
         Ad.create(newAdd,function(err,ad){
             if(err){
-                console.log("Error from create newAdd")
+                console.log("Error from create newAdd");
                 console.log(err);
                 return;
             }
 
-            User.findOne({_id:adData.user._id},function(err,user){
-               if(err){
-                   console.log("Error from user find");
-                   console.log(err);
-                   return;
-               }
-
-                console.log("Success:");
-
-                var userAdd = newAdd;
-                delete userAdd.user;
-                delete  userAdd.user_id;
-                delete  userAdd.requestedPeople;
-                user.ads.push(userAdd);
-                user.save();
-            });
             console.log("Ready to insert the add");
             res.status(200);
             res.end();
         });
 
+    },
+    createCommentForAd: function(req,res,next){
+        var commentData = req.body;
+
+        console.log(commentData);
+        //console.log(newAdd);
+
+        Ad.findOne({_id: commentData.ad_id}).exec(function(err, ad){
+            if(err){
+                console.log(err);
+                return;
+            }
+            var cmt = {
+                user_id : commentData.user_id,
+                username:commentData.username,
+                body:commentData.comment
+            };
+            ad.comments.push(cmt);
+            ad.save();
+            res.send(ad);
+        });
+
+    },
+    deleteAd : function(req,res,next){
+        console.log(req.params);
+        var adId = req.params.id;
+
+        Ad.remove({ _id: adId }, function(err,collection) {
+            if (err) {
+                return next(err);
+            }
+            else {
+                console.log("deleted");
+                res.send(collection);
+            }
+        });
+    },
+    increaseVisited: function(req, res, next){
+        //console.log(req.params);
+        var adId = req.params.id;
+        var adData = {};
+        Ad.findOne({_id: adId}).exec(function(err, ad){
+            if(err){
+                console.log(err);
+                return;
+            }
+            var currVisited = ad.visited;
+            ad.visited = currVisited + 1;
+            Ad.update({_id:adId},ad,function(){
+                res.send({ad:ad});
+                res.end();
+            });
+        });
     }
 };

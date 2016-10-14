@@ -9,6 +9,15 @@ app.factory('main', function(MainResource, $http, $q){
                 deferred.reject(response);
             });
             return deferred.promise;
+        },
+        deleteAd : function(ad){
+            var deferred = $q.defer();
+            ad.$delete({id: ad._id}, function(response){
+                deferred.resolve()
+            }, function(response){
+                deferred.reject(response);
+            });
+            return deferred.promise;
         }
 
     }

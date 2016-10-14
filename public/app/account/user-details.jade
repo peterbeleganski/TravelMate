@@ -2,7 +2,8 @@
    h2.text-center {{user.username}} 's Profile
    .row
       .col-md-6.text-center
-         img(src="{{img}}" width="350px")
+         img(ng-hide="showByteImage()" ng-src="data:image/*;base64,{{user.image}}" id="photo-id" width="300" height="270" alt="https://www.plexusmd.com/PlexusMDAPI//Images/ProfilePicture/default_profile.jpg")
+         img(ng-show="showByteImage()" src="{{image}}" width="300" height="270")
       .col-md-6
          .panel.panel-primary
             .panel-heading Email
